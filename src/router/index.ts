@@ -4,14 +4,29 @@
  * Automatic routes for `./src/pages/*.vue`
  */
 
+import App from '@/App.vue'
+import Counter from '@/components/counter/Counter.vue'
 // Composables
 import { createRouter, createWebHistory } from 'vue-router/auto'
 import { setupLayouts } from 'virtual:generated-layouts'
-import { routes } from 'vue-router/auto-routes'
+// import { routes } from 'vue-router/auto-routes'
+
+const routes = [
+  {
+    path: '/',
+    name: 'Home',
+    component: App,
+  },
+  {
+    path: '/counter',
+    name: 'Counter',
+    component: Counter,
+  },
+]
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
-  routes: setupLayouts(routes),
+  routes,
 })
 
 // Workaround for https://github.com/vitejs/vite/issues/11804
